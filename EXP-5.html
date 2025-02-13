@@ -1,0 +1,148 @@
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Feedback Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            overflow-y: scroll;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            margin: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+        }
+        input[type="text"],
+        input[type="email"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        input[type="radio"],
+        input[type="checkbox"] {
+            margin-right: 10px;
+        }
+        .button {
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .button:hover {
+            background-color: #218838;
+        }
+        .char-count {
+            text-align: right;
+            color: #555;
+        }
+        textarea {
+            resize: vertical;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Student Feedback Form</h1>
+        <form>
+            <label for="fullName">Full Name:</label>
+            <input type="text" id="fullName" name="fullName" value="RAJAS DEV">
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" value="rajasdev@gmail.com">
+
+            <label>How satisfied are you with this course?</label>
+            <input type="radio" id="excellent" name="satisfaction" value="excellent" checked>
+            <label for="excellent">Excellent</label><br>
+            <input type="radio" id="good" name="satisfaction" value="good">
+            <label for="good">Good</label><br>
+            <input type="radio" id="average" name="satisfaction" value="average">
+            <label for="average">Average</label><br>
+            <input type="radio" id="poor" name="satisfaction" value="poor">
+            <label for="poor">Poor</label><br>
+
+            <label>Rate the following aspects of the course:</label>
+            <label for="contentRating">Content:</label>
+            <select id="contentRating" name="contentRating">
+                <option value="1">1 - Poor</option>
+                <option value="2">2 - Fair</option>
+                <option value="3">3 - Good</option>
+                <option value="4">4 - Very Good</option>
+                <option value="5">5 - Excellent</option>
+            </select>
+
+            <label for="instructorRating">Instructor:</label>
+            <select id="instructorRating" name="instructorRating">
+                <option value="1">1 - Poor</option>
+                <option value="2">2 - Fair</option>
+                <option value="3">3 - Good</option>
+                <option value="4">4 - Very Good</option>
+                <option value="5">5 - Excellent</option>
+            </select>
+
+            <label>What features did you like? (Select all that apply)</label>
+            <input type="checkbox" id="courseContent" name="features" value="courseContent" checked>
+            <label for="courseContent">Course Content</label><br>
+            <input type="checkbox" id="teachingStyle" name="features" value="teachingStyle">
+            <label for="teachingStyle">Teaching Style</label><br>
+            <input type="checkbox" id="assignment" name="features" value="assignment">
+            <label for="assignment">Assignment</label><br>
+            <input type="checkbox" id="labSessions" name="features" value="labSessions">
+            <label for="labSessions">Lab Sessions</label><br>
+
+            <label for="difficulty">How difficult was the course?</label>
+            <select id="difficulty" name="difficulty">
+                <option value="hard" selected>Hard</option>
+                <option value="medium">Medium</option>
+                <option value="easy">Easy</option>
+            </select>
+
+            <label for="additionalFeedback">Additional Feedback:</label>
+            <textarea id="additionalFeedback" name="additionalFeedback" rows="4" cols="50" placeholder="Your comments..." maxlength="150" oninput="updateCharCount()"></textarea>
+            <div class="char-count" id="charCount">0/150</div>
+
+            <label for="improvementSuggestions">Suggestions for Improvement:</label>
+            <textarea id="improvementSuggestions" name="improvementSuggestions" rows="4" cols="50" placeholder="Your suggestions..."></textarea>
+
+            <input type="checkbox" id="subscribe" name="subscribe" checked>
+            <label for="subscribe">Subscribe to Newsletter</label><br>
+
+            <input type="submit" value="Submit" class="button">
+        </form>
+    </div>
+    <script>
+        function updateCharCount() {
+            var charCount = document.getElementById('additionalFeedback').value.length;
+            document.getElementById('charCount').innerText = charCount + "/150";
+        }
+    </script>
+</body>
+</html>
