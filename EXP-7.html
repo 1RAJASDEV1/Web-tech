@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Review</title>
+    <style>
+        body {
+            background: #f5f5f5;
+            padding: 40px;
+            font-family: 'Segoe UI', sans-serif;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        .container:hover {
+            transform: translateY(-5px);
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #333;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #444;
+        }
+        input, textarea, select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+        input:focus, textarea:focus, select:focus {
+            border-color: #4CAF50;
+            outline: none;
+        }
+        textarea {
+            height: 120px;
+            resize: vertical;
+        }
+        .star-rating {
+            display: flex;
+            flex-direction: row-reverse;
+            justify-content: flex-end;
+            margin-bottom: 10px;
+        }
+        .star-rating input {
+            display: none;
+        }
+        .star-rating label {
+            cursor: pointer;
+            font-size: 32px;
+            color: #ddd;
+            transition: color 0.2s ease;
+        }
+        .star-rating label:before {
+            content: '★';
+        }
+        .star-rating input:checked ~ label:before,
+        .star-rating label:hover:before,
+        .star-rating label:hover ~ label:before {
+            color: #ffd700;
+        }
+        .submit-btn {
+            background: #4CAF50;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s ease;
+        }
+        .submit-btn:hover {
+            background: #45a049;
+        }
+        .review-submitted {
+            display: none;
+            text-align: center;
+            background: #e8f5e9;
+            padding: 20px;
+            border-radius: 5px;
+            margin-top: 20px;
+            animation: fadeIn 0.5s ease;
+        }
+        .error {
+            color: #d32f2f;
+            font-size: 14px;
+            margin-top: 5px;
+            display: none;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Write a Product Review</h1>
+        <form id="reviewForm">
+            <div class="form-group">
+                <label for="productName">Product Name</label>
+                <input type="text" id="productName" placeholder="Enter the product name">
+                <div id="productNameError" class="error">Please enter the product name</div>
+            </div>
+            <div class="form-group">
+                <label for="category">Category</label>
+                <select id="category">
+                    <option value="">Select a category</option>
+                    <option value="electronics">Electronics</option>
+                    <option value="clothing">Clothing</option>
+                    <option value="home">Home & Kitchen</option>
+                    <option value="beauty">Beauty</option>
+                    <option value="sports">Sports & Outdoors</option>
+                </select>
+                <div id="categoryError" class="error">Please select a category</div>
+            </div>
+            <div class="form-group">
+                <label>Rating</label>
+                <div class="star-rating">
+                    <input type="radio" id="star5" name="rating" value="5"><label for="star5"></label>
+                    <input type="radio" id="star4" name="rating" value="4"><label for="star4"></label>
+                    <input type="radio" id="star3" name="rating" value="3"><label for="star3"></label>
+                    <input type="radio" id="star2" name="rating" value="2"><label for="star2"></label>
+                    <input type="radio" id="star1" name="rating" value="1"><label for="star1"></label>
+                </div>
+                <div id="ratingError" class="error">Please select a rating</div>
+            </div>
+            <div class="form-group">
+                <label for="reviewTitle">Review Title</label>
+                <input type="text" id="reviewTitle" placeholder="Summarize your review">
+                <div id="reviewTitleError" class="error">Please enter a review title</div>
+            </div>
+            <div class="form-group">
+                <label for="reviewText">Review</label>
+                <textarea id="reviewText" placeholder="Tell us about your experience with the product..."></textarea>
+                <div id="reviewError" class="error">Minimum 20 characters required</div>
+            </div>
+            <div class="form-group">
+                <label for="pros">Pros</label>
+                <textarea id="pros" placeholder="What did you like about the product?"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="cons">Cons</label>
+                <textarea id="cons" placeholder="What could be improved?"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="name">Your Name</label>
+                <input type="text" id="name" placeholder="Your name">
+                <div id="nameError" class="error">Please enter your name</div>
+            </div>
+            <button type="submit" class="submit-btn">Submit Review</button>
+        </form>
+        <div id="thankYouMessage" class="review-submitted">
+            <h2>Thank You!</h2>
+            <p>Your review has been submitted successfully.</p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('reviewForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            document.querySelectorAll('.error').forEach(el => el.style.display = 'none');
+            
+            let isValid = true;
+            
+            const productName = document.getElementById('productName').value.trim();
+            if (!productName) {
+                document.getElementById('productNameError').style.display = 'block';
+                isValid = false;
+            }
+            
+            const category = document.getElementById('category').value;
+            if (!category) {
+                document.getElementById('categoryError').style.display = 'block';
+                isValid = false;
+            }
+            
+            if (!document.querySelector('input[name="rating"]:checked')) {
+                document.getElementById('ratingError').style.display = 'block';
+                isValid = false;
+            }
+            
+            const reviewTitle = document.getElementById('reviewTitle').value.trim();
+            if (!reviewTitle) {
+                document.getElementById('reviewTitleError').style.display = 'block';
+                isValid = false;
+            }
+            
+            const review = document.getElementById('reviewText').value.trim();
+            if (review.length < 20) {
+                document.getElementById('reviewError').style.display = 'block';
+                isValid = false;
+            }
+            
+            const name = document.getElementById('name').value.trim();
+            if (!name) {
+                document.getElementById('nameError').style.display = 'block';
+                isValid = false;
+            }
+
+            if (isValid) {
+                this.style.display = 'none';
+                document.getElementById('thankYouMessage').style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>

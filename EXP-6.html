@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rajas Dev - Undergraduate Student in ICT</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f7;
+            margin: 0;
+            padding: 0;
+            color: #2c3e50;
+        }
+        .container {
+            width: 80%;
+            margin: 40px auto;
+            display: flex;
+            gap: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+        }
+        .sidebar {
+            width: 30%;
+            background-color: #2c3e50;
+            color: #fff;
+            padding: 20px;
+            border-radius: 5px 0 0 5px;
+        }
+        .content {
+            width: 70%;
+            padding: 20px;
+            border-radius: 0 5px 5px 0;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 32px;
+            color: #2c3e50;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .header h3 {
+            margin: 5px 0 0;
+            font-size: 20px;
+            color: #2c3e50;
+            font-weight: normal;
+            letter-spacing: 1px;
+        }
+        .profile-photo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto 20px;
+        }
+        .profile-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .section {
+            margin-bottom: 20px;
+        }
+        .section-title {
+            border-left: 5px solid #1abc9c;
+            padding-left: 10px;
+            font-size: 20px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            color: #fff;
+        }
+        .content .section-title {
+            color: #2c3e50;
+            border-left: 5px solid #1abc9c;
+        }
+        .contact-item, .skill-item, .language-item, .education-item, .project-item {
+            margin-bottom: 10px;
+        }
+        .contact-item h4, .skill-item h4, .language-item h4, .education-item h4, .project-item h4 {
+            margin: 0 0 5px;
+            font-size: 16px;
+            color: #1abc9c;
+        }
+        .contact-item p, .skill-item p, .language-item p, .education-item p, .project-item p {
+            margin: 0;
+            font-size: 14px;
+            color: #fff;
+        }
+        .content .contact-item p, .content .skill-item p, .content .language-item p, .content .education-item p, .content .project-item p {
+            color: #2c3e50;
+        }
+        ul {
+            list-style-type: disc;
+            padding-left: 20px;
+            margin: 0;
+            color: #fff;
+        }
+        .content ul {
+            color: #2c3e50;
+        }
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                width: 90%;
+            }
+            .sidebar, .content {
+                width: 100%;
+            }
+            .sidebar {
+                border-radius: 5px 5px 0 0;
+            }
+            .content {
+                border-radius: 0 0 5px 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="sidebar">
+            <div class="profile-photo">
+                <!-- Replace with actual image path or use a placeholder -->
+                <img src="https://via.placeholder.com/120" alt="Rajas Dev">
+            </div>
+
+            <!-- Contact Information -->
+            <div class="section">
+                <div class="section-title">Contact</div>
+                <div class="contact-item">
+                    <h4>Address</h4>
+                    <p>Ahmedabad, Gujarat, India</p>
+                </div>
+                <div class="contact-item">
+                    <h4>Phone</h4>
+                    <p>+91 81286 46409</p>
+                </div>
+                <div class="contact-item">
+                    <h4>Email</h4>
+                    <p>dev.rict22@sot.pdpu.ac.in</p>
+                </div>
+                <div class="contact-item">
+                    <h4>GitHub</h4>
+                    <p><a href="https://github.com/1RAJASDEV1" target="_blank" style="color: #1abc9c;">github.com/1RAJASDEV1</a></p>
+                </div>
+            </div>
+
+            <!-- Education -->
+            <div class="section">
+                <div class="section-title">Education</div>
+                <div class="education-item">
+                    <h4>Undergraduate Student in Information and Communication Technology</h4>
+                    <p>Pandit Deendayal Energy University, Gandhinagar</p>
+                    <p>Expected Graduation: 2026</p>
+                </div>
+            </div>
+
+            <!-- Skills -->
+            <div class="section">
+                <div class="section-title">Skills</div>
+                <div class="skill-item">
+                    <h4>Programming Languages</h4>
+                    <p>C, C++</p>
+                </div>
+                <div class="skill-item">
+                    <h4>Technologies</h4>
+                    <p>Artificial Intelligence (Interested)</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="header">
+                <h1>Rajas Dev</h1>
+                <h3>Undergraduate Student in ICT</h3>
+            </div>
+
+            <!-- Professional Summary -->
+            <div class="section">
+                <div class="section-title">Professional Summary</div>
+                <p>Motivated and results-oriented undergraduate student with a strong foundation in Information and Communication Technology (ICT) and proficiency in C/C++. Eager to apply academic knowledge and develop practical skills in Artificial Intelligence. Seeking a challenging entry-level position where I can contribute to a dynamic team and learn from experienced professionals.</p>
+            </div>
+
+            <!-- Projects -->
+            <div class="section">
+                <div class="section-title">Projects</div>
+                <div class="project-item">
+                    <h4>AI-Based Mock Interview</h4>
+                    <p>Developed an AI-based application to simulate mock interview scenarios, helping users prepare effectively by providing instant feedback and analysis.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
